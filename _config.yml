@@ -1,0 +1,51 @@
+title: "Alliances (UCL Computer Science)"
+description: "A scaffold site for enhancing the Alliances digital experience at UCL Computer Science"
+url: "https://alliances.cs.ucl.ac.uk"
+baseurl: "" # GitHub Pages custom domain
+
+permalink: pretty
+markdown: kramdown
+
+# GitHub Pages–supported plugins
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+  services:
+    output: true
+    permalink: /services/:slug/
+  pathways:
+    output: true
+    permalink: /pathways/:slug/
+  releases:
+    output: true
+    permalink: /release-notes/:slug/
+
+defaults:
+  - scope: { path: "" }
+    values:
+      layout: default
+  - scope: { path: "", type: "pages" }
+    values:
+      layout: page
+  - scope: { path: "", type: "services" }
+    values:
+      layout: service
+  - scope: { path: "", type: "pathways" }
+    values:
+      layout: pathway
+  - scope: { path: "", type: "releases" }
+    values:
+      layout: release
+
+# Expose a simple site version for footer
+version: "0.1.0"
+
+# SEO
+seo:
+  name: "UCL CS Alliances"

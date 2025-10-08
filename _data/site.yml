@@ -1,0 +1,10 @@
+tagline: "We bond the pioneers of our future"
+mission: >-
+  In alliance with our collaborators, we empower our students to learn from real-world challenges,
+  our academics to apply their research rigour in practice, and our industry partners to innovate with confidence at low risk.
+
+announcement:
+  enabled: true         # set true to show
+  text: "This site is released as a closed alpha version. All feedback welcome."
+  cta_label: "Share feedback"
+  cta_url: "/feedback/"  # can be on- or off-site

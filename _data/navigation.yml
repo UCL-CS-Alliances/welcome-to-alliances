@@ -1,0 +1,27 @@
+root:
+  - type: link
+    label: "Home"
+    url: "/"
+
+  - type: dropdown
+    label: "For students"
+    audience: "students"   # pulls services dynamically
+
+  - type: dropdown
+    label: "For researchers"
+    audience: "researchers" # pulls services dynamically
+
+  - type: dropdown
+    label: "For partners"
+    audience: "partners"    # pulls services dynamically
+
+  - type: dropdown
+    label: "Account"
+    items:
+      - label: "Sign in"
+        url: "/sign-in/"
+        active: true
+
+  - type: link
+    label: "Contact us"
+    url: "/contact/"

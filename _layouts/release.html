@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<article class="release">
+  <h1>Version {{ page.version }}</h1>
+  <p>
+    <strong>Released on:</strong> {{ page.date | date: "%-d %B %Y" }}<br>
+    <strong>Status:</strong> {{ page.status }}
+  </p>
+
+  {{ content }}
+
+</article>

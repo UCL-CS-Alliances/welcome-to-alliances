@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<article class="service">
+  <header>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+  </header>
+
+  {% if page.action_url %}
+    <p>
+      <a class="btn" href="{{ page.action_url }}"
+         {% if page.action_url contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>
+        {{ page.action_label | default: "Learn more" }}
+      </a>
+    </p>
+  {% endif %}
+
+{% if page.audience %}
+  <p><strong>Audience:</strong> {{ page.audience | join: ", " }}</p>
+{% endif %}
+
+  {% if page.pathways %}
+    <p><strong>Pathway:</strong>
+      {% assign pw = site.pathways | where_exp: "p","page.pathways contains p.slug" %}
+      {% for p in pw %}
+        <a href="{{ p.url | relative_url }}">{{ p.title }}</a>{% unless forloop.last %}, {% endunless %}
+      {% endfor %}
+    </p>
+  {% endif %}
+
+  {{ content }}
+</article>

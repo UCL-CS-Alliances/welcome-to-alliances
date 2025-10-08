@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<article class="pathway">
+  <header>
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}<p>{{ page.description }}</p>{% endif %}
+  </header>
+
+  {% assign related_services = site.services | where_exp: "s", "s.pathways contains page.slug" | sort: "title" %}
+  {% if related_services and related_services.size > 0 %}
+    <section>
+      <h2>Services</h2>
+      <ul>
+        {% for s in related_services %}
+          <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a> — {{ s.description | default: "" }}</li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+
+  {% assign related_posts = site.posts | where_exp: "p", "p.pathways and p.pathways contains page.slug" | sort: "date" | reverse %}
+  {% if related_posts and related_posts.size > 0 %}
+    <section>
+      <h2>Stories</h2>
+      <ul>
+        {% for p in related_posts %}
+          <li>
+            <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
+            <time datetime="{{ p.date | date_to_xmlschema }}"> · {{ p.date | date: "%-d %B %Y" }}</time>
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  {% endif %}
+</article>
