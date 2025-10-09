@@ -15,7 +15,7 @@ layout: default
   <div class="grid">
     {% assign paths = site.pathways | sort: "weight" %}
     {% for p in paths %}
-      <div class="card">
+<div class="card tile tile--gradient">  <!-- adds hover lift -->
         <h3><a href="{{ p.url | relative_url }}">{{ p.title }}</a></h3>
         {% if p.description %}<p>{{ p.description }}</p>{% endif %}
 
@@ -26,11 +26,11 @@ layout: default
   {% if s.spotlight and s.pathways and s.pathways contains p.slug %}
     {% unless has_spot %}
       {% assign has_spot = true %}
-      <div class="spotlight">
+            <div class="spotlight stack" style="--stack-gap:.5rem">
         <h4 class="spotlight-title">Service spotlight</h4>
-        <ul>
+        <ul class="list-plain cluster">
     {% endunless %}
-          <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a></li>
+          <li><a class="pill" href="{{ s.url | relative_url }}">{{ s.title }}</a></li>
   {% endif %}
 {% endfor %}
 {% if has_spot %}

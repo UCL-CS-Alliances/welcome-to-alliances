@@ -15,11 +15,11 @@
 <meta property="og:url" content="http://localhost:4000/pathways/undecided/" />
 <meta property="og:site_name" content="Alliances (UCL Computer Science)" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-10-08T21:02:13+01:00" />
+<meta property="article:published_time" content="2025-10-09T13:45:02+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Undecided pathway" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-10-08T21:02:13+01:00","datePublished":"2025-10-08T21:02:13+01:00","description":"Pathway description goes here too.","headline":"Undecided pathway","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pathways/undecided/"},"url":"http://localhost:4000/pathways/undecided/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-10-09T13:45:02+01:00","datePublished":"2025-10-09T13:45:02+01:00","description":"Pathway description goes here too.","headline":"Undecided pathway","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pathways/undecided/"},"url":"http://localhost:4000/pathways/undecided/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/site.css">
 </head>
@@ -48,109 +48,72 @@
   </div>
   <div class="banner-nav">
     <nav class="nav-bar" aria-label="Primary">
-  <ul class="nav-root">
-    
-      
-        <li class="nav-col nav-item">
-          <a class="nav-link" href="/">Home</a>
+  <ul class="nav-root" role="menubar">
+    <!-- Home -->
+    <li class="nav-item" role="none">
+      <a class="nav-link" href="/" role="menuitem">Home</a>
+    </li><li class="nav-item has-submenu" role="none">
+      <button class="menu-button"
+              id="btn-students"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="menu-students">
+        For students
+      </button>
+      <ul class="menu-panel"
+          id="menu-students"
+          role="menu"
+          aria-labelledby="btn-students"
+          hidden><li role="none"><a role="menuitem" class="nav-link" href="/services/ixn/">Industry Exchange Network (IXN)</a></li></ul>
+    </li><li class="nav-item has-submenu" role="none">
+      <button class="menu-button"
+              id="btn-researchers"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="menu-researchers">
+        For researchers
+      </button>
+      <ul class="menu-panel"
+          id="menu-researchers"
+          role="menu"
+          aria-labelledby="btn-researchers"
+          hidden></ul>
+    </li><li class="nav-item has-submenu" role="none">
+      <button class="menu-button"
+              id="btn-partners"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="menu-partners">
+        For partners
+      </button>
+      <ul class="menu-panel"
+          id="menu-partners"
+          role="menu"
+          aria-labelledby="btn-partners"
+          hidden><li role="none"><a role="menuitem" class="nav-link" href="/services/ixn/">Industry Exchange Network (IXN)</a></li></ul>
+    </li><li class="nav-item has-submenu" role="none">
+      <button class="menu-button"
+              id="btn-account"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="menu-account">
+        Account
+      </button>
+      <ul class="menu-panel"
+          id="menu-account"
+          role="menu"
+          aria-labelledby="btn-account"
+          hidden>
+        <li role="none">
+          <a role="menuitem" class="nav-link" href="/sign-in/">Sign in</a>
         </li>
+      </ul>
+    </li>
 
-      
-    
-      
-        <!-- Audience-driven dropdown -->
-        <li class="nav-col">
-          <details class="menu">
-            <summary>For students</summary>
-            <ul class="menu-list" role="menu">
-              
-              
-                
-                
-                
-                
-                  <li role="none">
-                    
-                      <a role="menuitem" class="nav-link" href="/services/ixn/">Industry Exchange Network (IXN)</a>
-                    
-                  </li>
-                
-              
-            </ul>
-          </details>
-        </li>
-
-      
-    
-      
-        <!-- Audience-driven dropdown -->
-        <li class="nav-col">
-          <details class="menu">
-            <summary>For researchers</summary>
-            <ul class="menu-list" role="menu">
-              
-              
-                
-                
-                
-                
-              
-            </ul>
-          </details>
-        </li>
-
-      
-    
-      
-        <!-- Audience-driven dropdown -->
-        <li class="nav-col">
-          <details class="menu">
-            <summary>For partners</summary>
-            <ul class="menu-list" role="menu">
-              
-              
-                
-                
-                
-                
-                  <li role="none">
-                    
-                      <a role="menuitem" class="nav-link" href="/services/ixn/">Industry Exchange Network (IXN)</a>
-                    
-                  </li>
-                
-              
-            </ul>
-          </details>
-        </li>
-
-      
-    
-      
-        <!-- Static dropdown (Account) -->
-        <li class="nav-col">
-          <details class="menu">
-            <summary>Account</summary>
-            <ul class="menu-list" role="menu">
-              
-                <li role="none">
-                  
-                    <a role="menuitem" class="nav-link" href="/sign-in/">Sign in</a>
-                  
-                </li>
-              
-            </ul>
-          </details>
-        </li>
-      
-    
-      
-        <li class="nav-col nav-item">
-          <a class="nav-link" href="/contact/">Contact us</a>
-        </li>
-
-      
-    
+    <!-- Contact -->
+    <li class="nav-item" role="none">
+      <a class="nav-link" href="/contact/" role="menuitem">Contact us</a>
+    </li>
   </ul>
 </nav>
 
@@ -165,13 +128,22 @@
     <p>Pathway description goes here too.</p>
   </header>
 
-  
-  
+
+
+
 
   
+
+
+
+
+
+
+
   
+
+
 </article>
-
   </main>
 
   <footer class="site-footer" role="contentinfo">
@@ -187,6 +159,9 @@
     </div>
   </div>
 </footer>
+
+
+<script src="/assets/js/nav.js" defer></script>
 
 </body>
 </html>

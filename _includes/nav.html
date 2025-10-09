@@ -1,59 +1,132 @@
 <nav class="nav-bar" aria-label="Primary">
-  <ul class="nav-root">
-    {% for item in site.data.navigation.root %}
-      {% if item.type == "link" %}
-        <li class="nav-col nav-item">
-          <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.label }}</a>
-        </li>
+  <ul class="nav-root" role="menubar">
+    <!-- Home -->
+    <li class="nav-item" role="none">
+      <a class="nav-link" href="{{ '/' | relative_url }}" role="menuitem">Home</a>
+    </li>
 
-      {% elsif item.type == "dropdown" and item.audience %}
-        <!-- Audience-driven dropdown -->
-        <li class="nav-col">
-          <details class="menu">
-            <summary>{{ item.label }}</summary>
-            <ul class="menu-list" role="menu">
-              {% assign svc = site.services | where_exp: "s","s.show_in_nav != false" %}
-              {% for s in svc %}
-                {% assign audiences = s.audience %}
-                {% assign aud_ok = false %}
-                {% if audiences %}
-                  {% if audiences contains item.audience or audiences == item.audience %}
-                    {% assign aud_ok = true %}
-                  {% endif %}
-                {% endif %}
-                {% if aud_ok %}
-                  <li role="none">
-                    {% if s.nav_active == false %}
-                      <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ s.title }}</span>
-                    {% else %}
-                      <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ s.title }}</a>
-                    {% endif %}
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
-          </details>
-        </li>
+    {%- comment -%} Audience dropdown: For students {%- endcomment -%}
+    <li class="nav-item has-submenu" role="none">
+      <button class="menu-button"
+              id="btn-students"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="menu-students">
+        For students
+      </button>
+      <ul class="menu-panel"
+          id="menu-students"
+          role="menu"
+          aria-labelledby="btn-students"
+          hidden>
+        {%- assign _svc_sorted = site.services | sort: "title" -%}
+        {%- for s in _svc_sorted -%}
+          {%- if s.show_in_nav != false and s.audience -%}
+            {%- assign _aud_ok = false -%}
+            {%- if s.audience contains 'students' or s.audience == 'students' -%}{%- assign _aud_ok = true -%}{%- endif -%}
+            {%- if _aud_ok -%}
+              <li role="none">
+                {%- if s.nav_active == false -%}
+                  <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ s.title }}</span>
+                {%- else -%}
+                  <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ s.title }}</a>
+                {%- endif -%}
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </li>
 
-      {% elsif item.type == "dropdown" and item.items %}
-        <!-- Static dropdown (Account) -->
-        <li class="nav-col">
-          <details class="menu">
-            <summary>{{ item.label }}</summary>
-            <ul class="menu-list" role="menu">
-              {% for link in item.items %}
-                <li role="none">
-                  {% if link.active %}
-                    <a role="menuitem" class="nav-link" href="{{ link.url | relative_url }}">{{ link.label }}</a>
-                  {% else %}
-                    <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ link.label }}</span>
-                  {% endif %}
-                </li>
-              {% endfor %}
-            </ul>
-          </details>
+    {%- comment -%} Audience dropdown: For researchers {%- endcomment -%}
+    <li class="nav-item has-submenu" role="none">
+      <button class="menu-button"
+              id="btn-researchers"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="menu-researchers">
+        For researchers
+      </button>
+      <ul class="menu-panel"
+          id="menu-researchers"
+          role="menu"
+          aria-labelledby="btn-researchers"
+          hidden>
+        {%- assign _svc_sorted = site.services | sort: "title" -%}
+        {%- for s in _svc_sorted -%}
+          {%- if s.show_in_nav != false and s.audience -%}
+            {%- assign _aud_ok = false -%}
+            {%- if s.audience contains 'researchers' or s.audience == 'researchers' -%}{%- assign _aud_ok = true -%}{%- endif -%}
+            {%- if _aud_ok -%}
+              <li role="none">
+                {%- if s.nav_active == false -%}
+                  <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ s.title }}</span>
+                {%- else -%}
+                  <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ s.title }}</a>
+                {%- endif -%}
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </li>
+
+    {%- comment -%} Audience dropdown: For partners {%- endcomment -%}
+    <li class="nav-item has-submenu" role="none">
+      <button class="menu-button"
+              id="btn-partners"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="menu-partners">
+        For partners
+      </button>
+      <ul class="menu-panel"
+          id="menu-partners"
+          role="menu"
+          aria-labelledby="btn-partners"
+          hidden>
+        {%- assign _svc_sorted = site.services | sort: "title" -%}
+        {%- for s in _svc_sorted -%}
+          {%- if s.show_in_nav != false and s.audience -%}
+            {%- assign _aud_ok = false -%}
+            {%- if s.audience contains 'partners' or s.audience == 'partners' -%}{%- assign _aud_ok = true -%}{%- endif -%}
+            {%- if _aud_ok -%}
+              <li role="none">
+                {%- if s.nav_active == false -%}
+                  <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ s.title }}</span>
+                {%- else -%}
+                  <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ s.title }}</a>
+                {%- endif -%}
+              </li>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    </li>
+
+    {%- comment -%} Account (static dropdown) {%- endcomment -%}
+    <li class="nav-item has-submenu" role="none">
+      <button class="menu-button"
+              id="btn-account"
+              aria-haspopup="true"
+              aria-expanded="false"
+              aria-controls="menu-account">
+        Account
+      </button>
+      <ul class="menu-panel"
+          id="menu-account"
+          role="menu"
+          aria-labelledby="btn-account"
+          hidden>
+        <li role="none">
+          <a role="menuitem" class="nav-link" href="{{ '/sign-in/' | relative_url }}">Sign in</a>
         </li>
-      {% endif %}
-    {% endfor %}
+      </ul>
+    </li>
+
+    <!-- Contact -->
+    <li class="nav-item" role="none">
+      <a class="nav-link" href="{{ '/contact/' | relative_url }}" role="menuitem">Contact us</a>
+    </li>
   </ul>
 </nav>

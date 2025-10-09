@@ -14,9 +14,26 @@ layout: default
   {% if s.pathways and s.pathways contains page.slug %}
     {% unless has_services %}
       {% assign has_services = true %}
-      <section>
+      {% assign _services_sorted = site.services | sort: "title" %}
+{% assign has_services = false %}
+{% for s in _services_sorted %}
+  {% if s.pathways and s.pathways contains page.slug %}
+    {% unless has_services %}
+      {% assign has_services = true %}
+      <section class="stack" style="--stack-gap:.5rem">
         <h2>Services</h2>
-        <ul>
+        <ul class="list-plain stack">
+    {% endunless %}
+          <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a>{% if s.description %} — {{ s.description }}{% endif %}</li>
+  {% endif %}
+{% endfor %}
+{% if has_services %}
+        </ul>
+      </section>
+{% endif %}
+<section class="stack" style="--stack-gap:.5rem">
+        <h2>Services</h2>
+        <ul class="list-plain stack">
     {% endunless %}
           <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a>{% if s.description %} — {{ s.description }}{% endif %}</li>
   {% endif %}
@@ -33,9 +50,9 @@ layout: default
   {% if p.pathways and p.pathways contains page.slug %}
     {% unless has_posts %}
       {% assign has_posts = true %}
-      <section>
+      <section class="stack" style="--stack-gap:.5rem">
         <h2>Stories</h2>
-        <ul>
+        <ul class="list-plain">
     {% endunless %}
           <li>
             <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
