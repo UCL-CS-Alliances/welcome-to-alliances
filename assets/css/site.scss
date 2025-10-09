@@ -255,8 +255,8 @@ img { max-width: 100%; height: auto; }
 .btn--primary:hover, .btn--primary:focus { filter: brightness(0.96); }
 
 h1, h2, h3 { color: var(--ucl-ink-2); }
-h1 { font-size: clamp(1.8rem, 1.4rem + 1.2vw, 2.4rem); margin: 0 0 .75rem; }
-h2 { font-size: clamp(1.35rem, 1.1rem + .6vw, 1.7rem); margin: 1.25rem 0 .5rem; }
+h1 { font-size: clamp(1.8rem, calc(#{'1.4rem + 1.2vw'}), 2.4rem); }
+h2 { font-size: clamp(1.35rem, calc(#{'1.1rem + 0.6vw'}), 1.7rem); }
 h3 { font-size: 1.1rem; margin: 1rem 0 .4rem; }
 p, li { color: var(--ucl-ink-2); }
 .small { color: var(--muted); font-size: .95rem; }
