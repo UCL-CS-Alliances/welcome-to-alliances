@@ -7,30 +7,44 @@ layout: default
     {% if page.description %}<p>{{ page.description }}</p>{% endif %}
   </header>
 
-  {% assign related_services = site.services | where_exp: "s", "s.pathways contains page.slug" | sort: "title" %}
-  {% if related_services and related_services.size > 0 %}
-    <section>
-      <h2>Services</h2>
-      <ul>
-        {% for s in related_services %}
-          <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a> — {{ s.description | default: "" }}</li>
-        {% endfor %}
-      </ul>
-    </section>
+{% comment %} Services related to this pathway, sorted by title {% endcomment %}
+{% assign _services_sorted = site.services | sort: "title" %}
+{% assign has_services = false %}
+{% for s in _services_sorted %}
+  {% if s.pathways and s.pathways contains page.slug %}
+    {% unless has_services %}
+      {% assign has_services = true %}
+      <section>
+        <h2>Services</h2>
+        <ul>
+    {% endunless %}
+          <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a>{% if s.description %} — {{ s.description }}{% endif %}</li>
   {% endif %}
+{% endfor %}
+{% if has_services %}
+        </ul>
+      </section>
+{% endif %}
 
-  {% assign related_posts = site.posts | where_exp: "p", "p.pathways and p.pathways contains page.slug" | sort: "date" | reverse %}
-  {% if related_posts and related_posts.size > 0 %}
-    <section>
-      <h2>Stories</h2>
-      <ul>
-        {% for p in related_posts %}
+{% comment %} Stories related to this pathway, newest first {% endcomment %}
+{% assign _posts_sorted = site.posts | sort: "date" | reverse %}
+{% assign has_posts = false %}
+{% for p in _posts_sorted %}
+  {% if p.pathways and p.pathways contains page.slug %}
+    {% unless has_posts %}
+      {% assign has_posts = true %}
+      <section>
+        <h2>Stories</h2>
+        <ul>
+    {% endunless %}
           <li>
             <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
             <time datetime="{{ p.date | date_to_xmlschema }}"> · {{ p.date | date: "%-d %B %Y" }}</time>
           </li>
-        {% endfor %}
-      </ul>
-    </section>
   {% endif %}
+{% endfor %}
+{% if has_posts %}
+        </ul>
+      </section>     
+{% endif %}
 </article>

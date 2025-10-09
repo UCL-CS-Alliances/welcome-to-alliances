@@ -20,17 +20,23 @@ layout: default
         {% if p.description %}<p>{{ p.description }}</p>{% endif %}
 
         {% comment %} Service spotlight: services tagged with this pathway and spotlight: true {% endcomment %}
-        {% assign sp = site.services | where_exp: "s", "s.spotlight == true" | where_exp: "s", "s.pathways contains p.slug" %}
-        {% if sp and sp.size > 0 %}
-          <div class="spotlight">
-            <h4 class="spotlight-title">Service spotlight</h4>
-            <ul>
-              {% for s in sp %}
-                <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a></li>
-              {% endfor %}
-            </ul>
-          </div>
-        {% endif %}
+{% assign _svcs_sorted = site.services | sort: "title" %}
+{% assign has_spot = false %}
+{% for s in _svcs_sorted %}
+  {% if s.spotlight and s.pathways and s.pathways contains p.slug %}
+    {% unless has_spot %}
+      {% assign has_spot = true %}
+      <div class="spotlight">
+        <h4 class="spotlight-title">Service spotlight</h4>
+        <ul>
+    {% endunless %}
+          <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a></li>
+  {% endif %}
+{% endfor %}
+{% if has_spot %}
+        </ul>
+      </div>
+{% endif %}
       </div>
     {% endfor %}
   </div>
