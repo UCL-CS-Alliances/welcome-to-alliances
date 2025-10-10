@@ -16,6 +16,48 @@ layout: default
     </p>
   {% endif %}
 
+{{ content }}
+
+{% comment %} --- Related services (by slug) --- {% endcomment %}
+{% if page.related_services and page.related_services != empty %}
+  {% assign _want = page.related_services %}
+  {% assign _found_any = false %}
+  <section class="related-services">
+    <h2>Related services</h2>
+    <ul class="list-plain cluster">
+      {% assign _svcs_sorted = site.services | sort: "title" %}
+      {% for s in _svcs_sorted %}
+        {%- comment -%}
+          Match by slug (preferred). If a service doesn’t have a slug, try to derive one
+          from its URL (/services/<slug>/). We also exclude the current page by URL.
+        {%- endcomment -%}
+        {% assign s_slug = s.slug %}
+        {% if s_slug == nil or s_slug == '' %}
+          {% assign s_url = s.url | split: '/' %}
+          {% assign s_slug = s_url | last %}
+          {% if s_slug == '' %}{% assign s_slug = s_url | slice: -2, 1 | first %}{% endif %}
+        {% endif %}
+
+        {% if _want contains s_slug and s.url != page.url %}
+          {% assign _found_any = true %}
+          <li>
+            <a class="pill" href="{{ s.url | relative_url }}">
+              {{ s.nav_label | default: s.title }}
+            </a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+    {% unless _found_any %}
+      <p class="small">No related services found.</p>
+    {% endunless %}
+  </section>
+{% endif %}
+
+<hr>
+
+<h3>Service information</h3>
+
 {% if page.audience %}
   <p><strong>Audience:</strong> {{ page.audience | join: ", " }}</p>
 {% endif %}

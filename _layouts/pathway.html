@@ -7,61 +7,49 @@ layout: default
     {% if page.description %}<p>{{ page.description }}</p>{% endif %}
   </header>
 
-{% comment %} Services related to this pathway, sorted by title {% endcomment %}
-{% assign _services_sorted = site.services | sort: "title" %}
-{% assign has_services = false %}
-{% for s in _services_sorted %}
-  {% if s.pathways and s.pathways contains page.slug %}
-    {% unless has_services %}
-      {% assign has_services = true %}
-      {% assign _services_sorted = site.services | sort: "title" %}
-{% assign has_services = false %}
-{% for s in _services_sorted %}
-  {% if s.pathways and s.pathways contains page.slug %}
-    {% unless has_services %}
-      {% assign has_services = true %}
-      <section class="stack" style="--stack-gap:.5rem">
-        <h2>Services</h2>
-        <ul class="list-plain stack">
-    {% endunless %}
-          <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a>{% if s.description %} — {{ s.description }}{% endif %}</li>
-  {% endif %}
-{% endfor %}
-{% if has_services %}
-        </ul>
-      </section>
-{% endif %}
-<section class="stack" style="--stack-gap:.5rem">
-        <h2>Services</h2>
-        <ul class="list-plain stack">
-    {% endunless %}
-          <li><a href="{{ s.url | relative_url }}">{{ s.title }}</a>{% if s.description %} — {{ s.description }}{% endif %}</li>
-  {% endif %}
-{% endfor %}
-{% if has_services %}
-        </ul>
-      </section>
-{% endif %}
+  {%- comment -%} Services related to this pathway, sorted by title {%- endcomment -%}
+  {%- assign _services_sorted = site.services | sort: "title" -%}
+  {%- assign has_services = false -%}
+  {%- for s in _services_sorted -%}
+    {%- if s.pathways and s.pathways contains page.slug -%}
+      {%- unless has_services -%}
+        {%- assign has_services = true -%}
+        <section class="stack" style="--stack-gap:.5rem">
+          <h2>Services</h2>
+          <ul class="list-plain stack">
+      {%- endunless -%}
+            <li>
+              <a href="{{ s.url | relative_url }}">{{ s.title }}</a>
+              {%- if s.description -%} — {{ s.description }}{%- endif -%}
+            </li>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if has_services -%}
+          </ul>
+        </section>
+  {%- endif -%}
 
-{% comment %} Stories related to this pathway, newest first {% endcomment %}
-{% assign _posts_sorted = site.posts | sort: "date" | reverse %}
-{% assign has_posts = false %}
-{% for p in _posts_sorted %}
-  {% if p.pathways and p.pathways contains page.slug %}
-    {% unless has_posts %}
-      {% assign has_posts = true %}
-      <section class="stack" style="--stack-gap:.5rem">
-        <h2>Stories</h2>
-        <ul class="list-plain">
-    {% endunless %}
+  {%- comment -%} Stories related to this pathway, newest first {%- endcomment -%}
+  <section class="stack" style="--stack-gap:.5rem">
+    <h2>Stories</h2>
+    {%- assign _posts_sorted = site.posts | sort: "date" | reverse -%}
+    {%- capture stories_items -%}
+      {%- for p in _posts_sorted -%}
+        {%- if p.pathways and p.pathways contains page.slug -%}
           <li>
             <a href="{{ p.url | relative_url }}">{{ p.title }}</a>
             <time datetime="{{ p.date | date_to_xmlschema }}"> · {{ p.date | date: "%-d %B %Y" }}</time>
           </li>
-  {% endif %}
-{% endfor %}
-{% if has_posts %}
-        </ul>
-      </section>     
-{% endif %}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endcapture -%}
+
+    {%- if stories_items contains '<li' -%}
+      <ul class="list-plain">
+        {{ stories_items }}
+      </ul>
+    {%- else -%}
+      <p class="small">This pathway currently has no published stories.</p>
+    {%- endif -%}
+  </section>
 </article>

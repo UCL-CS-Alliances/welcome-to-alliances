@@ -25,11 +25,12 @@
             {%- assign _aud_ok = false -%}
             {%- if s.audience contains 'students' or s.audience == 'students' -%}{%- assign _aud_ok = true -%}{%- endif -%}
             {%- if _aud_ok -%}
+                  {%- assign label = s.nav_label | default: s.title -%}
               <li role="none">
                 {%- if s.nav_active == false -%}
-                  <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ s.title }}</span>
+                  <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ label }}</span>
                 {%- else -%}
-                  <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ s.title }}</a>
+              <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ label }}</a>
                 {%- endif -%}
               </li>
             {%- endif -%}
@@ -58,11 +59,12 @@
             {%- assign _aud_ok = false -%}
             {%- if s.audience contains 'researchers' or s.audience == 'researchers' -%}{%- assign _aud_ok = true -%}{%- endif -%}
             {%- if _aud_ok -%}
+                  {%- assign label = s.nav_label | default: s.title -%}
               <li role="none">
                 {%- if s.nav_active == false -%}
-                  <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ s.title }}</span>
+                  <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ label }}</span>
                 {%- else -%}
-                  <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ s.title }}</a>
+                  <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ label }}</a>
                 {%- endif -%}
               </li>
             {%- endif -%}
@@ -91,11 +93,12 @@
             {%- assign _aud_ok = false -%}
             {%- if s.audience contains 'partners' or s.audience == 'partners' -%}{%- assign _aud_ok = true -%}{%- endif -%}
             {%- if _aud_ok -%}
+                  {%- assign label = s.nav_label | default: s.title -%}
               <li role="none">
                 {%- if s.nav_active == false -%}
-                  <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ s.title }}</span>
+                  <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ label }}</span>
                 {%- else -%}
-                  <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ s.title }}</a>
+                  <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ label }}</a>
                 {%- endif -%}
               </li>
             {%- endif -%}
