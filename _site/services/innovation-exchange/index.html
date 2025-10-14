@@ -15,14 +15,18 @@
 <meta property="og:url" content="http://localhost:4000/services/innovation-exchange/" />
 <meta property="og:site_name" content="Alliances (UCL Computer Science)" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2025-10-10T17:42:56+01:00" />
+<meta property="article:published_time" content="2025-10-14T21:10:09+01:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Innovation Exchange" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-10-10T17:42:56+01:00","datePublished":"2025-10-10T17:42:56+01:00","description":"Offer or request time and expertise within the department to support innovation activities through a time-barter system that values shared contribution.","headline":"Innovation Exchange","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/services/innovation-exchange/"},"url":"http://localhost:4000/services/innovation-exchange/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2025-10-14T21:10:09+01:00","datePublished":"2025-10-14T21:10:09+01:00","description":"Offer or request time and expertise within the department to support innovation activities through a time-barter system that values shared contribution.","headline":"Innovation Exchange","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/services/innovation-exchange/"},"url":"http://localhost:4000/services/innovation-exchange/"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/assets/css/site.css">
+
+
+
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="banner" role="banner">
@@ -34,15 +38,14 @@
     <div class="announce-wrap">
       
 
-<div class="lcd" role="status" aria-live="polite">
-  <span class="lcd-text">This site is released as a closed alpha version. All feedback welcome.</span>
+<div class="lcd-announcement" role="status" aria-live="polite">
+  <div class="lcd-text">This site is released as a closed alpha version. All feedback welcome.</div>
   
-    <a class="lcd-cta" href="/feedback/" >
+    <a class="btn btn--primary lcd-cta" href="/feedback/">
       Share feedback
     </a>
   
-</div>
-
+  </div>
 
     </div>
   </div>
@@ -64,7 +67,27 @@
           id="menu-students"
           role="menu"
           aria-labelledby="btn-students"
-          hidden><li role="none"><a role="menuitem" class="nav-link" href="/services/find-your-next-job/">Find your next job</a></li><li role="none"><a role="menuitem" class="nav-link" href="/services/ixn-information/">Industry Exchange Network (IXN)</a></li><li role="none"><span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">Innovation Exchange</span></li><li role="none"><a role="menuitem" class="nav-link" href="/services/knowledge-hub/">Knowledge Hub</a></li><li role="none"><a role="menuitem" class="nav-link" href="/services/learning-hub/">Learning Hub</a></li><li role="none"><span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">Meet a Co-Founder</span></li><li role="none"><span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">Mentoring Hub</span></li></ul>
+          hidden><li role="none"><a role="menuitem"
+     class="nav-link"
+     href="/services/find-your-next-job/"
+     >
+    Find your next job
+  </a></li><li role="none"><a role="menuitem"
+     class="nav-link"
+     href="/services/ixn-information/"
+     >
+    Industry Exchange Network (IXN)
+  </a></li><li role="none"><span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">Innovation Exchange</span></li><li role="none"><a role="menuitem"
+     class="nav-link"
+     href="/services/knowledge-hub/"
+     >
+    Knowledge Hub
+  </a></li><li role="none"><a role="menuitem"
+     class="nav-link"
+     href="/services/learning-hub/"
+     >
+    Learning Hub
+  </a></li><li role="none"><span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">Meet a Co-Founder</span></li><li role="none"><span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">Mentoring Hub</span></li></ul>
     </li><li class="nav-item has-submenu" role="none">
       <button class="menu-button"
               id="btn-researchers"
@@ -92,23 +115,13 @@
           aria-labelledby="btn-partners"
           hidden><li role="none"><a role="menuitem" class="nav-link" href="/services/advertise-a-work-opportunity/">Advertise a work opportunity</a></li><li role="none"><span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">Executive Education & Professional Development</span></li><li role="none"><a role="menuitem" class="nav-link" href="/services/ixn-workflow/">IXN Workflow Manager</a></li><li role="none"><a role="menuitem" class="nav-link" href="/services/dashboard/">Membership Dashboard</a></li><li role="none"><span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">Mentoring Hub</span></li><li role="none"><a role="menuitem" class="nav-link" href="/services/cv-library/">CV Library</a></li></ul>
     </li><li class="nav-item has-submenu" role="none">
-      <button class="menu-button"
-              id="btn-account"
-              aria-haspopup="true"
-              aria-expanded="false"
-              aria-controls="menu-account">
-        Account
-      </button>
-      <ul class="menu-panel"
-          id="menu-account"
-          role="menu"
-          aria-labelledby="btn-account"
-          hidden>
-        <li role="none">
-          <a role="menuitem" class="nav-link" href="/sign-in/">Sign in</a>
-        </li>
-      </ul>
+  <button class="menu-button" id="btn-account" aria-haspopup="true" aria-expanded="false" aria-controls="menu-account">Account</button>
+  <ul class="menu-panel" id="menu-account" role="menu" aria-labelledby="btn-account" hidden>
+    <li role="none">
+      <a id="account-action" role="menuitem" class="nav-link" href="/sign-in/">Sign in</a>
     </li>
+  </ul>
+</li>
 
     <!-- Contact -->
     <li class="nav-item" role="none">
@@ -181,6 +194,37 @@
 </footer>
 
 
+<script>
+  // Routes + page flags (Liquid runs here)
+  window.ALLIANCES_ROUTES = {
+    signin: "/sign-in/",
+    dashboard: "/dashboard/"
+  };
+  window.REQUIRE_AUTH = false;
+</script>
+
+<script>
+  // Routes + flags (you already added these)
+  window.ALLIANCES_ROUTES = {
+    signin: "/sign-in/",
+    dashboard: "/dashboard/"
+  };
+  window.REQUIRE_AUTH = false;
+
+  // Data bootstrap — available on ALL pages
+  (function () {
+    window.ALLIANCES_DATA = window.ALLIANCES_DATA || {};
+    if (!('members' in window.ALLIANCES_DATA)) {
+      window.ALLIANCES_DATA.members = [{"id":"chanel","credentials":{"email":"partnerships@chanel.example.com","password":"chanel-demo"},"company":{"name":"Chanel","contact_first":"Claire","contact_last":"Martin"},"membership":{"tier":"platinum","status":"active","expiry":"2026-03-05","manager":"Tim Bodley-Scott"},"redeemed_benefits":["B03","B08"]},{"id":"microsoft","credentials":{"email":"engage@microsoft.example.com","password":"msft-demo"},"company":{"name":"Microsoft","contact_first":"Arun","contact_last":"Desai"},"membership":{"tier":"silver","status":"active","expiry":"2026-01-28"},"redeemed_benefits":["B07","B11","B12"]},{"id":"google","credentials":{"email":"partnerships@google.example.com","password":"google-demo"},"company":{"name":"Google","contact_first":"Mina","contact_last":"Patel"},"membership":{"tier":"gold","status":"active","expiry":"2025-12-04"},"redeemed_benefits":["B04","B10"]},{"id":"amazon","credentials":{"email":"collab@amazon.example.com","password":"amazon-demo"},"company":{"name":"Amazon","contact_first":"Ben","contact_last":"Hughes"},"membership":{"tier":"silver","status":"active","expiry":"2026-02-16"},"redeemed_benefits":["B04"]},{"id":"meta","credentials":{"email":"labs@meta.example.com","password":"meta-demo"},"company":{"name":"Meta","contact_first":"Priya","contact_last":"Rao"},"membership":{"tier":"silver","status":"active","expiry":"2026-05-10"},"redeemed_benefits":[]},{"id":"apple","credentials":{"email":"talent@apple.example.com","password":"apple-demo"},"company":{"name":"Apple","contact_first":"Jamie","contact_last":"Wong"},"membership":{"tier":"bronze","status":"active","expiry":"2026-04-01"},"redeemed_benefits":["B15"]},{"id":"deepmind","credentials":{"email":"ai@deepmind.example.com","password":"deepmind-demo"},"company":{"name":"Google DeepMind","contact_first":"Sara","contact_last":"Klein"},"membership":{"tier":"platinum","status":"active","expiry":"2026-06-20"},"redeemed_benefits":["B11","B13"]},{"id":"chubb","credentials":{"email":"innovation@chubb.example.com","password":"chubb-demo"},"company":{"name":"Chubb","contact_first":"Tom","contact_last":"Alvarez"},"membership":{"tier":"bronze","status":"active","expiry":"2025-11-22"},"redeemed_benefits":[]},{"id":"siemens","credentials":{"email":"partners@siemens.example.com","password":"siemens-demo"},"company":{"name":"Siemens","contact_first":"Elke","contact_last":"Fischer"},"membership":{"tier":"gold","status":"active","expiry":"2026-03-30"},"redeemed_benefits":["B06","B09"]},{"id":"bbc","credentials":{"email":"rdi@bbc.example.com","password":"bbc-demo"},"company":{"name":"BBC","contact_first":"Omar","contact_last":"Haddad"},"membership":{"tier":"silver","status":"active","expiry":"2025-12-14"},"redeemed_benefits":["B04","B14"]}];
+    }
+    if (!('benefits' in window.ALLIANCES_DATA)) {
+      window.ALLIANCES_DATA.benefits = [{"id":"B01","tier_min":"bronze","category":"Workforce Development & Talent Acquisition","description":"Project abstracts publicised in IXN student showcase materials."},{"id":"B02","tier_min":"bronze","category":"Workforce Development & Talent Acquisition","description":"(Optional) Sponsorship of a student engagement event (cost varies; discuss with Strategic Alliances Team)."},{"id":"B03","tier_min":"bronze","category":"Innovation","description":"Unlimited undergraduate or graduate IXN project placements (IP to company, subject to academic approval)."},{"id":"B04","tier_min":"silver","category":"Workforce Development & Talent Acquisition","description":"Sponsorship of a student engagement event, including catering for up to 50 attendees."},{"id":"B05","tier_min":"silver","category":"Workforce Development & Talent Acquisition","description":"Careers Service Recruiters’ Club membership."},{"id":"B06","tier_min":"silver","category":"Workforce Development & Talent Acquisition","description":"Promotion of up to 2 job posts per year to the student/alumni network."},{"id":"B07","tier_min":"silver","category":"PR & Networking","description":"Recognition via a case study and company logo on the departmental website."},{"id":"B08","tier_min":"silver","category":"PR & Networking","description":"Invite to the student projects showcase."},{"id":"B09","tier_min":"silver","category":"Operations","description":"Dedicated account manager from the Strategic Alliances Team (SAT)."},{"id":"B10","tier_min":"gold","category":"Workforce Development & Talent Acquisition","description":"Half-day executive education, incl. catering for up to 20 attendees."},{"id":"B11","tier_min":"gold","category":"Workforce Development & Talent Acquisition","description":"“Recruiter in residence” access—hold interviews on campus in a UCL meeting room."},{"id":"B12","tier_min":"gold","category":"PR & Networking","description":"Complimentary exclusive Annual Dinner with the Head of Department."},{"id":"B13","tier_min":"platinum","category":"Workforce Development & Talent Acquisition","description":"Full-day executive education, incl. catering for up to 30 attendees.","supersedes":"B10"},{"id":"B14","tier_min":"platinum","category":"Workforce Development & Talent Acquisition","description":"Dedicated career support to run reverse mentoring programmes."},{"id":"B15","tier_min":"platinum","category":"Innovation","description":"Sponsorship and participation in multi-disciplinary hackathons."},{"id":"B16","tier_min":"platinum","category":"PR & Networking","description":"Invitation to network with UCL PhD students."},{"id":"B17","tier_min":"platinum","category":"Operations","description":"Seat for you or a senior executive on the Friends of CS Steering Committee."}];
+    }
+  }());
+</script>
+
+<!-- Load shared scripts AFTER the globals -->
+<script src="/assets/js/auth.js" defer></script>
 <script src="/assets/js/nav.js" defer></script>
 
 </body>

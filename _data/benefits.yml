@@ -1,0 +1,96 @@
+# Tiers in ascending order of access: bronze < silver < gold < platinum
+# Fields:
+# - id: stable identifier
+# - tier_min: bronze|silver|gold|platinum (minimum tier required)
+# - description: user-facing copy
+# - category: Workforce Development & Talent Acquisition | Innovation | PR & Networking | Operations
+# - supersedes: optional list/ID of benefits that this one replaces when accessible
+
+- id: B01
+  tier_min: bronze
+  category: Workforce Development & Talent Acquisition
+  description: Project abstracts publicised in IXN student showcase materials.
+
+- id: B02
+  tier_min: bronze
+  category: Workforce Development & Talent Acquisition
+  description: "(Optional) Sponsorship of a student engagement event (cost varies; discuss with Strategic Alliances Team)."
+
+- id: B03
+  tier_min: bronze
+  category: Innovation
+  description: Unlimited undergraduate or graduate IXN project placements (IP to company, subject to academic approval).
+
+# --- Silver (includes all Bronze) ---
+- id: B04
+  tier_min: silver
+  category: Workforce Development & Talent Acquisition
+  description: Sponsorship of a student engagement event, including catering for up to 50 attendees.
+
+- id: B05
+  tier_min: silver
+  category: Workforce Development & Talent Acquisition
+  description: Careers Service Recruiters’ Club membership.
+
+- id: B06
+  tier_min: silver
+  category: Workforce Development & Talent Acquisition
+  description: Promotion of up to 2 job posts per year to the student/alumni network.
+
+- id: B07
+  tier_min: silver
+  category: PR & Networking
+  description: Recognition via a case study and company logo on the departmental website.
+
+- id: B08
+  tier_min: silver
+  category: PR & Networking
+  description: Invite to the student projects showcase.
+
+- id: B09
+  tier_min: silver
+  category: Operations
+  description: Dedicated account manager from the Strategic Alliances Team (SAT).
+
+# --- Gold (includes all Silver) ---
+- id: B10
+  tier_min: gold
+  category: Workforce Development & Talent Acquisition
+  description: Half-day executive education, incl. catering for up to 20 attendees.
+
+- id: B11
+  tier_min: gold
+  category: Workforce Development & Talent Acquisition
+  description: “Recruiter in residence” access—hold interviews on campus in a UCL meeting room.
+
+- id: B12
+  tier_min: gold
+  category: PR & Networking
+  description: Complimentary exclusive Annual Dinner with the Head of Department.
+
+# --- Platinum (includes all Gold) ---
+- id: B13
+  tier_min: platinum
+  category: Workforce Development & Talent Acquisition
+  description: Full-day executive education, incl. catering for up to 30 attendees.
+  supersedes: B10   # replaces Gold half-day session for platinum members
+
+- id: B14
+  tier_min: platinum
+  category: Workforce Development & Talent Acquisition
+  description: Dedicated career support to run reverse mentoring programmes.
+
+- id: B15
+  tier_min: platinum
+  category: Innovation
+  description: Sponsorship and participation in multi-disciplinary hackathons.
+
+- id: B16
+  tier_min: platinum
+  category: PR & Networking
+  description: Invitation to network with UCL PhD students.
+
+- id: B17
+  tier_min: platinum
+  category: Operations
+  description: Seat for you or a senior executive on the Friends of CS Steering Committee.

@@ -30,7 +30,12 @@
                 {%- if s.nav_active == false -%}
                   <span role="menuitem" class="nav-link disabled" aria-disabled="true" tabindex="-1">{{ label }}</span>
                 {%- else -%}
-              <a role="menuitem" class="nav-link" href="{{ s.url | relative_url }}">{{ label }}</a>
+  <a role="menuitem"
+     class="nav-link"
+     href="{{ s.url | relative_url }}"
+     {% if s.require_auth %}data-require-auth="true"{% endif %}>
+    {{ label }}
+  </a>
                 {%- endif -%}
               </li>
             {%- endif -%}
@@ -108,24 +113,14 @@
     </li>
 
     {%- comment -%} Account (static dropdown) {%- endcomment -%}
-    <li class="nav-item has-submenu" role="none">
-      <button class="menu-button"
-              id="btn-account"
-              aria-haspopup="true"
-              aria-expanded="false"
-              aria-controls="menu-account">
-        Account
-      </button>
-      <ul class="menu-panel"
-          id="menu-account"
-          role="menu"
-          aria-labelledby="btn-account"
-          hidden>
-        <li role="none">
-          <a role="menuitem" class="nav-link" href="{{ '/sign-in/' | relative_url }}">Sign in</a>
-        </li>
-      </ul>
+<li class="nav-item has-submenu" role="none">
+  <button class="menu-button" id="btn-account" aria-haspopup="true" aria-expanded="false" aria-controls="menu-account">Account</button>
+  <ul class="menu-panel" id="menu-account" role="menu" aria-labelledby="btn-account" hidden>
+    <li role="none">
+      <a id="account-action" role="menuitem" class="nav-link" href="{{ '/sign-in/' | relative_url }}">Sign in</a>
     </li>
+  </ul>
+</li>
 
     <!-- Contact -->
     <li class="nav-item" role="none">

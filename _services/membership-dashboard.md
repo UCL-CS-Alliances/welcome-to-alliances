@@ -5,7 +5,7 @@ description: Track and redeem Friends of UCL Computer Science membership benefit
 audience: ["partners"]
 pathways: ["innovation-management"]
 action_label: "View your membership dashboard"
-action_url: "/404/"
+action_url: "/dashboard/"
 show_in_nav: true
 nav_active: true
 spotlight: true

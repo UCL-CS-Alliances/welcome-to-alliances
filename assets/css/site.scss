@@ -262,3 +262,75 @@ p, li { color: var(--ucl-ink-2); }
 .small { color: var(--muted); font-size: .95rem; }
 
 .related-services { margin-top: 1rem; }
+
+.input {
+  padding: .5rem .6rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  width: min(28rem, 100%);
+}
+
+.benefit { display: flex; align-items: center; gap: .5rem; }
+.benefit-state { display: inline-flex; width: 1.5rem; justify-content: center; }
+
+/* LCD announcement layout */
+.lcd-announcement {
+  display: flex;
+  flex-direction: column;    /* forces CTA to a new line */
+  align-items: center;       /* center both text + CTA */
+  justify-content: center;
+  gap: .5rem;                /* space between text and CTA */
+  text-align: center;
+
+  /* Make sure nothing clips at various zoom levels */
+  overflow: visible;
+  min-height: auto;
+}
+
+/* Wrap long messages nicely */
+.lcd-text {
+  max-width: 65ch;           /* readable line length */
+  white-space: normal;       /* allow wrapping */
+  overflow-wrap: anywhere;   /* break long words/URLs if needed */
+  word-break: break-word;    /* fallback for older engines */
+  margin: 0;                 /* reset if inherited */
+}
+
+/* Keep the CTA centered and visible */
+.lcd-cta {
+  align-self: center;        /* explicit center */
+  display: inline-flex;      /* consistent button sizing */
+  width: auto;               /* ensure it's not squeezed */
+}
+
+/* If your LCD has a styled container, keep it flexible */
+.banner .lcd-announcement,
+.lcd {
+  /* remove any fixed height if present */
+  height: auto;
+  max-height: none;
+}
+
+/* Pathway tiles grid */
+.grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;            /* default: single column */
+}
+
+/* Large screens: max two side-by-side */
+@media (min-width: 1720px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* (nice-to-have) make cards stretch evenly */
+.grid > .card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.card.tile h3 { margin: 0 0 .25rem; }
+.card.tile p  { margin: 0; }

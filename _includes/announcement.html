@@ -1,11 +1,11 @@
 {% assign ann = site.data.site.announcement %}
 {% if ann.enabled and ann.text %}
-<div class="lcd" role="status" aria-live="polite">
-  <span class="lcd-text">{{ ann.text }}</span>
+<div class="lcd-announcement" role="status" aria-live="polite">
+  <div class="lcd-text">{{ ann.text }}</div>
   {% if ann.cta_label and ann.cta_url %}
-    <a class="lcd-cta" href="{{ ann.cta_url }}" {% if ann.cta_url contains 'http' %}target="_blank" rel="noopener noreferrer"{% endif %}>
+    <a class="btn btn--primary lcd-cta" href="{{ ann.cta_url | relative_url }}">
       {{ ann.cta_label }}
     </a>
   {% endif %}
-</div>
+  </div>
 {% endif %}

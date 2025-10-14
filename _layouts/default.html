@@ -7,7 +7,13 @@
   <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
   {%- seo -%}
   <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+
+{% if page.require_auth %}
+  <meta name="robots" content="noindex,nofollow">
+{% endif %}
+
 </head>
+
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   {% include header.html %}
@@ -18,7 +24,38 @@
 
   {% include footer.html %}
 
-<script src="{{ '/assets/js/nav.js' | relative_url }}" defer></script>
+<script>
+  // Routes + page flags (Liquid runs here)
+  window.ALLIANCES_ROUTES = {
+    signin: "{{ '/sign-in/' | relative_url }}",
+    dashboard: "{{ '/dashboard/' | relative_url }}"
+  };
+  window.REQUIRE_AUTH = {{ page.require_auth | default: false | jsonify }};
+</script>
+
+<script>
+  // Routes + flags (you already added these)
+  window.ALLIANCES_ROUTES = {
+    signin: "{{ '/sign-in/' | relative_url }}",
+    dashboard: "{{ '/dashboard/' | relative_url }}"
+  };
+  window.REQUIRE_AUTH = {{ page.require_auth | default: false | jsonify }};
+
+  // Data bootstrap — available on ALL pages
+  (function () {
+    window.ALLIANCES_DATA = window.ALLIANCES_DATA || {};
+    if (!('members' in window.ALLIANCES_DATA)) {
+      window.ALLIANCES_DATA.members = {{ site.data.members | jsonify }};
+    }
+    if (!('benefits' in window.ALLIANCES_DATA)) {
+      window.ALLIANCES_DATA.benefits = {{ site.data.benefits | jsonify }};
+    }
+  }());
+</script>
+
+<!-- Load shared scripts AFTER the globals -->
+<script src="{{ '/assets/js/auth.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/nav.js'  | relative_url }}" defer></script>
 
 </body>
 </html>

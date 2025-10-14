@@ -19,7 +19,7 @@ root:
     label: "Account"
     items:
       - label: "Sign in"
-        url: "/sign-in/"
+        url: /sign-in/
         active: true
 
   - type: link

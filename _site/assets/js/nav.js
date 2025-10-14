@@ -93,3 +93,66 @@
     if (e.key === 'Escape') closeAll(null);
   });
 }());
+
+// --- Account Sign in/out toggle ---
+function getSession() {
+  try { return JSON.parse(localStorage.getItem('alliances_session') || 'null'); }
+  catch (e) { return null; }
+}
+(function toggleAccount() {
+  const link = document.getElementById('account-action');
+  if (!link) return;
+  const session = getSession();
+  if (session && session.member_id) {
+    link.textContent = 'Sign out';
+    link.setAttribute('href', '#');
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      localStorage.removeItem('alliances_session');   // <-- the one-liner
+      // Optionally close the menu:
+      const btn = document.getElementById('btn-account');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      const panel = document.getElementById('menu-account');
+      if (panel) panel.hidden = true;
+      // Redirect somewhere sensible:
+      window.location.href = "{{ '/sign-in/' | relative_url }}";
+    }, { once: true });
+  } else {
+    link.textContent = 'Sign in';
+    link.setAttribute('href', "{{ '/sign-in/' | relative_url }}");
+  }
+}());
+
+// assets/js/nav.js  (append near the end or keep inside your init block)
+(function () {
+  function getSession() {
+    try { return JSON.parse(localStorage.getItem('alliances_session') || 'null'); }
+    catch (e) { return null; }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const link = document.getElementById('account-action');
+    if (!link) return;
+
+    const routes = window.ALLIANCES_ROUTES || {};
+    const session = getSession();
+    if (session && session.member_id) {
+      link.textContent = 'Sign out';
+      link.setAttribute('href', '#');
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.Auth && window.Auth.signOut();
+        // Close menu if present
+        const btn = document.getElementById('btn-account');
+        const panel = document.getElementById('menu-account');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+        if (panel) panel.hidden = true;
+        // Back to sign-in
+        window.location.href = routes.signin || '/sign-in/';
+      }, { once: true });
+    } else {
+      link.textContent = 'Sign in';
+      link.setAttribute('href', routes.signin || '/sign-in/');
+    }
+  });
+}());
